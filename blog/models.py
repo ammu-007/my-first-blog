@@ -3,7 +3,9 @@ from django.db import models
 from django.utils import timezone
 
 
-class Post(models.Model):
+class Post(
+    models.Model
+):  # Means that the Post is a Django Model, so Django knows that it should be saved in the database.
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     text = models.TextField()
@@ -15,4 +17,13 @@ class Post(models.Model):
         self.save()
 
     def __str__(self):
-        return self.title   
+        return self.title
+
+    def get_absolute_url(self):
+        return f"/post/{self.pk}"  # /blog/<slug>
+
+    def get_delete_url(self):
+        return f"/post/{ self.pk }/delete"
+
+    def get_edit_url(self):
+        return f"/post/{ self.pk }/edit"

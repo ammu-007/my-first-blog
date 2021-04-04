@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+{{post.title}}
+{% endblock title %}
+
+{% block content %}
+<h1>Are you sure to delete {{post.title}}?</h1>
+<form method="POST"> {% csrf_token %}
+    <button class="btn btn-danger">Yes, delete</button>
+</form>
+{{post.content}}
+{% endblock content %}
