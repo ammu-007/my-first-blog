@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+
 <div class="row">
     {% for post in posts %}
     {% include "blog/list_inline.html" with blog_post=post truncate=True detail=False %}
