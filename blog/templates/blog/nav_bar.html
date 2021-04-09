@@ -12,14 +12,15 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item" style="align-items: center; justify-content: center;">
                     <a class="nav-link" href="{% url 'post_new' %}">
                         <span>
-                            <!-- {% include './icons/file-earmark-plus.svg' %} -->
                             New
                         </span>
                     </a>
                 </li>
+                {% endif %}
             </ul>
             <form class="d-flex" action="/search/">
                 <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
